@@ -145,5 +145,4 @@ def checkToken(token) -> [bool, Response, User]:
 
 # 判断是否管理员
 def checkAdmin(user_query) -> bool:
-    ## 牛b
     return user_query.admin_type != '普通用户'
