@@ -28,7 +28,7 @@ ORDER_STATE_TYPE = (
 # 用户模型
 class User(models.Model):
     username = models.CharField(max_length=30, verbose_name='账号', primary_key=True)
-    password = models.CharField(max_length=100, verbose_name='密码+盐', editable=False)
+    password = models.CharField(max_length=100, verbose_name='密码+盐')
     name = models.CharField(max_length=20, verbose_name='姓名', blank=True, default='')
     phone = models.CharField(max_length=11, verbose_name='手机号')
     gender = models.CharField(max_length=10, choices=GENDER_TYPE, verbose_name='性别', blank=True, default='男')
