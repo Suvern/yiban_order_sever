@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-ROOT_URLCONF = 'yiban_order_service.urls'
+ROOT_URLCONF = 'yiban_order_server.urls'
 
 TEMPLATES = [
     {
@@ -123,6 +123,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# 邮件配置
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.yeah.net'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'flyingstudio@yeah.net'
+EMAIL_HOST_PASSWORD = 'DXQINUVKZENYIROU'
+DEFAULT_FROM_EMAIL = '中国矿业大学翔工作室 <flyingstudio@yeah.net>'
 
 # 服务端解决跨域
 CORS_ALLOW_CREDENTIALS = True

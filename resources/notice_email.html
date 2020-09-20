@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div>
+    <h1>易班大厅预约 - 新增预约</h1>
+    <p><b>预约人</b>：{{ order.person.name }}</p>
+    <p><b>预约部门</b>：{{ order.unit }}</p>
+    <p><b>预约内容</b>：{{ order.content }}</p>
+    <p><b>预约日期</b>：{{ order.date }}</p>
+    <p><b>开始时间</b>：{{ order.start_time }}</p>
+    <p><b>结束时间</b>：{{ order.end_time }}</p>
+    <p><b>人数</b>：{{ order.people }} </p>
+    <p><b>备注</b>：{{ order.extra }}</p>
+</div>
+
+<a href="http://yibanorder.91cumt.com/admin/Server/order/{{ order.id }}/change/">
+    <button>去审核</button>
+</a>
+
+<p>中国矿业大学 - 翔工作室</p>
+</body>
+</html>

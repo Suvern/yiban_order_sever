@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from Server.models.models import *
 
 admin.site.register(Token)
 
