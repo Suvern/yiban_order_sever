@@ -1,11 +1,14 @@
+from django.db import transaction
 from rest_framework.views import APIView
 from Server.models.response import JsonResponse
 from Server.serializers.serializers import *
+from Server.utils.email_utils.email_util import sendNewOrderEmail, sendOrderOrderedEmail
 from Server.views.user_views import checkToken, checkAdmin
 
 
 # 提交预约
 class OrderAdd(APIView):
+    @transaction.atomic
     def post(self, request):
         token = request.META.get("HTTP_TOKEN")
         [flag, response, user_query] = checkToken(token)
@@ -17,6 +20,11 @@ class OrderAdd(APIView):
 
         if order.is_valid():
             order.save(person=user_query)
+
+            # 发邮件
+            o = Order.objects.get(order['id'])
+            sendNewOrderEmail(o)
+            sendOrderOrderedEmail(o)
             return JsonResponse(0, '预约成功')
         else:
             return JsonResponse(1, '参数错误')
@@ -24,6 +32,7 @@ class OrderAdd(APIView):
 
 # 审核预约
 class OrderAgree(APIView):
+    @transaction.atomic
     def post(self, request):
         token = request.META.get("HTTP_TOKEN")
         [flag, response, user_query] = checkToken(token)

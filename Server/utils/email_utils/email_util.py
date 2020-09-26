@@ -13,18 +13,26 @@ def sendNewOrderEmail(order: Order) -> bool:
 
 
 def sendOrderOrderedEmail(order: Order) -> bool:
-    return sendEmail('【易班大厅预约】预约成功', order, orderOrderedTemplate)
+    return sendEmail('【易班大厅预约】预约成功', order, orderOrderedTemplate, [getQQEmailFromOrder(order)])
 
 
 def sendOrderAcceptEmail(order: Order) -> bool:
-    return sendEmail('【易班大厅预约】审核通过', order, orderAcceptTemplate)
+    return sendEmail('【易班大厅预约】审核通过', order, orderAcceptTemplate, [getQQEmailFromOrder(order)])
 
 
-def sendEmail(subject: str, order: Order, tp: str) -> bool:
+def sendOrderRejectedEmail(order: Order) -> bool:
+    return sendEmail('【易班大厅预约】审核结果', order, orderRejectedTemplate, [getQQEmailFromOrder(order)])
+
+
+def getQQEmailFromOrder(order: Order) -> str:
+    return f'{order.person.qq}@qq.com'
+
+
+def sendEmail(subject: str, order: Order, tp: str, to: [] = adminEmails) -> bool:
     html = template.Template(tp)
     content = html.render(context=Context({'order': order}))
     print(content)
-    message = EmailMultiAlternatives(subject, content, fromEmail, adminEmails)
+    message = EmailMultiAlternatives(subject, content, fromEmail, to)
     message.content_subtype = 'html'
     result = message.send()
     return result == 1

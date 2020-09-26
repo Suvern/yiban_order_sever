@@ -9,6 +9,6 @@ class MailSend(APIView):
     def get(self, request):
         order = Order.objects.last()
         print(sendNewOrderEmail(order))
-        print(sendOrderOrderedEmail(order))
-        print(sendOrderAcceptEmail(order))
+        # print(sendOrderOrderedEmail(order))
+        # print(sendOrderAcceptEmail(order))
         return JsonResponse(msg='流批')

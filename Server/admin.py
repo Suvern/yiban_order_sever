@@ -1,8 +1,6 @@
 from django.contrib import admin
 from Server.models.models import *
 
-admin.site.register(Token)
-
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):

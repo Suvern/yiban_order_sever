@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import format_html
 
 GENDER_TYPE = (
     ('男', '男'),
@@ -31,6 +32,7 @@ class User(models.Model):
     password = models.CharField(max_length=100, verbose_name='密码+盐')
     name = models.CharField(max_length=20, verbose_name='姓名', blank=True, default='')
     phone = models.CharField(max_length=11, verbose_name='手机号')
+    qq = models.CharField(max_length=20, verbose_name='QQ号')
     gender = models.CharField(max_length=10, choices=GENDER_TYPE, verbose_name='性别', blank=True, default='男')
     unit = models.CharField(max_length=30, verbose_name='工作单位', blank=True, default='')
     position = models.CharField(max_length=20, verbose_name='职务', blank=True, default='')

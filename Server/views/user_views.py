@@ -1,3 +1,4 @@
+from django.db import transaction
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from Server.models.response import JsonResponse
@@ -8,6 +9,7 @@ from django.contrib.auth.hashers import make_password, check_password
 
 # 用户登录
 class UserLogin(APIView):
+    @transaction.atomic
     def post(self, request):
         data = request.data
 
@@ -35,6 +37,7 @@ class UserLogin(APIView):
 
 # 用户注册
 class UserRegister(APIView):
+    @transaction.atomic
     def post(self, request):
         data = request.data
         # 加密
@@ -61,7 +64,7 @@ class UserRegister(APIView):
 
 # 验证token
 def checkToken(token) -> [bool, Response, User]:
-    if token is None or len(token) is 0:
+    if token is None or len(token) == 0:
         return [False, JsonResponse(1, 'token缺失'), None]
     try:
         token_query = Token.objects.get(token=token)
