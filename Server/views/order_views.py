@@ -19,10 +19,10 @@ class OrderAdd(APIView):
         order = OrderSerializer(data=data)
 
         if order.is_valid():
-            order.save(person=user_query)
+            o = order.save(person=user_query)
+            print(order.data)
 
             # 发邮件
-            o = Order.objects.get(order['id'])
             sendNewOrderEmail(o)
             sendOrderOrderedEmail(o)
             return JsonResponse(0, '预约成功')

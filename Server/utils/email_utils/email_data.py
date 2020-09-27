@@ -41,7 +41,7 @@ orderOrderedTemplate = '''
 <body>
 <div style="">
     <h1>易班大厅预约 - 预约成功</h1>
-    <p>您已成功预约易班大厅<b>{{ order.person.name }}</b>在<b>{{ order.data }}</b>的<b>{{ order.content }}</b>活动。</p>
+    <p>您已成功预约易班大厅<b>{{ order.person.name }}</b>在<b>{{ order.date }}</b>的<b>{{ order.content }}</b>活动。</p>
     <p>请耐心等待管理员审核，请联系管理员并关注小程序【易班大厅预约】查看审核结果</p>
 
     <p>
@@ -68,7 +68,7 @@ orderAcceptTemplate = '''
 <body>
 <div style="">
     <h1>易班大厅预约 - 审核通过</h1>
-    <p>您的预约：<b>{{ order.person.name }}</b>在<b>{{ order.data }}</b>的<b>{{ order.content }}</b>活动。已审核通过！</p>
+    <p>您的预约：<b>{{ order.person.name }}</b>在<b>{{ order.date }}</b>的<b>{{ order.content }}</b>活动。已审核通过！</p>
     <p>请负责人提前15分钟到场</p>
 
     <p>
@@ -96,7 +96,7 @@ orderRejectedTemplate = '''
 <body>
 <div style="">
     <h1>易班大厅预约 - 审核结果</h1>
-    <p>很遗憾，您的预约：<b>{{ order.person.name }}</b>在<b>{{ order.data }}</b>的<b>{{ order.content }}</b>活动，已被拒绝</p>
+    <p>很遗憾，您的预约：<b>{{ order.person.name }}</b>在<b>{{ order.date }}</b>的<b>{{ order.content }}</b>活动，已被拒绝</p>
     <p>拒绝理由：{{ order.reason }}</p>
     <p>
         如有疑问请联系管理员：<br>
