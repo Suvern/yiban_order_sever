@@ -29,10 +29,14 @@ def getQQEmailFromOrder(order: Order) -> str:
 
 
 def sendEmail(subject: str, order: Order, tp: str, to: [] = adminEmails) -> bool:
-    html = template.Template(tp)
-    content = html.render(context=Context({'order': order}))
-    print(content)
-    message = EmailMultiAlternatives(subject, content, fromEmail, to)
-    message.content_subtype = 'html'
-    result = message.send()
-    return result == 1
+    try:
+        html = template.Template(tp)
+        content = html.render(context=Context({'order': order}))
+        print(content)
+        message = EmailMultiAlternatives(subject, content, fromEmail, to)
+        message.content_subtype = 'html'
+        result = message.send()
+        return result == 1
+    except:
+        print('mail err!')
+    return False
