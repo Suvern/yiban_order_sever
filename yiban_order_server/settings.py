@@ -82,8 +82,8 @@ DATABASES = {
         'NAME': 'yiban_order',
         'USER': 'root',
         'PASSWORD': '123456-abc',
-        'HOST': '123.57.202.38',
-        'PORT': '3306'
+        'HOST': 'gz-cynosdbmysql-grp-f629rmmp.sql.tencentcdb.com',
+        'PORT': '25919'
     }
 }
 
