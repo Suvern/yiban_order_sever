@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from secret import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7=pawhpjk&3z*lcv%605wbj3!7dy**)h(ldyqe9drao7%5i$h='
+SECRET_KEY = secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,16 +77,7 @@ WSGI_APPLICATION = 'yiban_order_server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'yiban_order',
-        'USER': 'root',
-        'PASSWORD': '123456-abc',
-        'HOST': 'gz-cynosdbmysql-grp-f629rmmp.sql.tencentcdb.com',
-        'PORT': '25919'
-    }
-}
+DATABASES = databases
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -128,7 +120,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.yeah.net'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'flyingstudio@yeah.net'
-EMAIL_HOST_PASSWORD = 'DXQINUVKZENYIROU'
+EMAIL_HOST_PASSWORD = email_host_password
 DEFAULT_FROM_EMAIL = '中国矿业大学翔工作室 <flyingstudio@yeah.net>'
 
 # 服务端解决跨域
