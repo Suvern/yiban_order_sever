@@ -5,3 +5,6 @@
 [小程序前端项目地址](https://github.com/Suvern/yiban-order)
 
 简单粗暴
+
+## Serverless部署
+切换到分支`sls`的README.md
