@@ -1,0 +1,31 @@
+component: django
+name: yiban-order-server
+app: yiban-order-server
+stage: dev
+
+inputs:
+  region: ap-guangzhou
+  djangoProjectName: yiban_order_server
+  src: ./src
+  functionConf:
+    timeout: 10
+    memorySize: 256
+    environment:
+      variables:
+        TEST: vale
+  apigatewayConf:
+    protocols:
+      - https
+    environment: release
+  customDomain:
+    - domain: yibanorder.91cumt.com
+      certificateId: 'i705mcFK'
+      protocols:
+        - http
+        - https
+  endpoints:
+    - path: /
+      function:
+        functionName: django_component_3zpjk
+
+
